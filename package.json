@@ -1,0 +1,94 @@
+{
+  "name": "calcsuite",
+  "version": "1.0.0",
+  "description": "Decimal-exact, offline-first financial calculator library for React — India (₹) & US ($). ~55 calculators, scientific calculator, live FX, export, launcher/dialog. The financial-calculator module of AceCBM (Ace Cloud Business Management).",
+  "keywords": [
+    "finance",
+    "calculator",
+    "emi",
+    "loan",
+    "sip",
+    "tax",
+    "react",
+    "decimal",
+    "india",
+    "us",
+    "acecbm"
+  ],
+  "license": "MIT",
+  "author": "AceCBM (Ace Cloud Business Management)",
+  "homepage": "https://github.com/ashish13377/calcsuite#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashish13377/calcsuite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashish13377/calcsuite/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/calcsuite.js",
+  "module": "./dist/calcsuite.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/calcsuite.js"
+    },
+    "./theme.css": "./src/theme.css"
+  },
+  "files": [
+    "dist",
+    "src/theme.css",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "demo:build": "tsc -b && vite build",
+    "build": "vite build -c vite.lib.config.ts && npm run build:types",
+    "build:types": "tsc -p tsconfig.lib.json",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc -b",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run test"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "jspdf": {
+      "optional": true
+    },
+    "xlsx": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "decimal.js": "^10.4.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^29.1.1",
+    "jspdf": "^4.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8",
+    "xlsx": "^0.18.5"
+  }
+}

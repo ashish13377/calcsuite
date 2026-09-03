@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+dist-demo/
+*.tsbuildinfo
+
+# logs & caches
+*.log
+npm-debug.log*
+.vite/
+coverage/
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+*.local
+
+# assistant / local tooling (never publish)
+.claude/
+CLAUDE.md
