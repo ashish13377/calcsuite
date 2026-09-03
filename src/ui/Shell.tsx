@@ -9,7 +9,7 @@ import { CurrencyConverter } from './CurrencyConverter';
 import { SettingsPanel } from './SettingsPanel';
 import { HistoryPanel } from './HistoryPanel';
 import { CommandPalette, type PaletteAction } from './CommandPalette';
-import { GearIcon, SunIcon, MoonIcon, HistoryIcon } from './icons';
+import { GearIcon, SunIcon, MoonIcon, HistoryIcon, CalcIcon } from './icons';
 import { IntegrationPanel } from './IntegrationPanel';
 import { ExportMenu } from './ExportMenu';
 import { useHistory, type HistoryItem } from './history';
@@ -90,10 +90,13 @@ export function Shell({ onClose }: { onClose?: () => void }) {
     <div className="fc-shell" onKeyDown={onShellKey}>
       <header className="fc-topbar">
         <div className="brand fc-brand">
-          <strong>CalcSuite</strong>
-          <a className="fc-brand-sub" href="https://acecbm.com" target="_blank" rel="noopener noreferrer">
-            an AceCBM product ↗
-          </a>
+          <span className="fc-brand-mark" aria-hidden="true"><CalcIcon size={22} /></span>
+          <div className="fc-brand-text">
+            <strong>CalcSuite</strong>
+            <a className="fc-brand-sub" href="https://acecbm.com" target="_blank" rel="noopener noreferrer">
+              an AceCBM product ↗
+            </a>
+          </div>
         </div>
         <div className="fc-top-actions">
           <button className="icon-btn" onClick={() => setPaletteOpen(true)} aria-label="Search">⌘K Search</button>

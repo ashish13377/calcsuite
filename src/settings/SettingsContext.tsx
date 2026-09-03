@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { DEFAULT_SETTINGS, regionDefaults, type Region, type Settings } from './settings';
 import { makeFormatter, type Formatter } from '../core/format';
-import { fontStack } from '../ui/themePresets';
+import { fontStack, accentByMain } from '../ui/themePresets';
 
 type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
 
@@ -106,7 +106,14 @@ export function SettingsProvider({
   // selectors are DOM-based, so they cross it. Scoped here (not on <html>) so we don't clobber the
   // host's own `data-theme`. Dialogs render inside this subtree (no internal portal), so they inherit.
   const rootStyle = useMemo<CSSProperties>(
-    () => ({ display: 'contents', ['--fc-accent' as any]: settings.ui.accent, ['--fc-font-ui' as any]: fontStack(settings.ui.fontFamily) }),
+    () => ({
+      display: 'contents',
+      ['--fc-accent' as any]: settings.ui.accent,
+      // Each preset ships its own readable text colour for on-accent surfaces (buttons, active nav,
+      // FAB). Without this, on-accent text falls back to white and low-contrasts on light accents.
+      ['--fc-accent-ink' as any]: accentByMain(settings.ui.accent)?.ink ?? '#ffffff',
+      ['--fc-font-ui' as any]: fontStack(settings.ui.fontFamily),
+    }),
     [settings.ui.accent, settings.ui.fontFamily],
   );
 

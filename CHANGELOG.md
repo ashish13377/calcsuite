@@ -3,6 +3,15 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.3] — 2026-09-04
+
+### Fixed
+- **Readable text on accent surfaces.** Buttons, active nav, segmented toggles, the FAB and scientific keys now use each preset's own contrast colour (`--fc-accent-ink`) instead of a hardcoded white / dark-mode override — so the default Cyan (and Purple/Blue) accents no longer render near-black text on a mid-tone fill in dark mode.
+- **"Solved" field contrast.** The computed-value field dropped its muddy accent-tinted fill (it was low-contrast on dark themes); the dashed accent border + "solved" note still mark it.
+
+### Added
+- **Brand mark.** The calculator glyph (the default launcher/FAB icon) now sits beside the **CalcSuite** title in the dialog header, with the title and "an AceCBM product" subtitle stacked.
+
 ## [1.1.2] — 2026-09-04
 
 ### Fixed

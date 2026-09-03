@@ -1,34 +1,11 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { Dialog } from './Dialog';
 import { Shell } from './Shell';
+import { CalcIcon } from './icons';
 
-// Default trigger icon — a crisp calculator glyph that inherits currentColor.
+// Default trigger icon — the shared calculator glyph (same one shown beside the brand).
 // Override entirely via the `icon` (or `trigger`) prop.
-function DefaultIcon({ size = 22 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect x="4" y="2" width="16" height="20" rx="2" />
-      <line x1="8" y1="6" x2="16" y2="6" />
-      <line x1="8" y1="10" x2="8" y2="10" />
-      <line x1="12" y1="10" x2="12" y2="10" />
-      <line x1="16" y1="10" x2="16" y2="10" />
-      <line x1="8" y1="14" x2="8" y2="14" />
-      <line x1="12" y1="14" x2="12" y2="14" />
-      <line x1="16" y1="14" x2="16" y2="14" />
-      <line x1="8" y1="18" x2="12" y2="18" />
-    </svg>
-  );
-}
+const DefaultIcon = ({ size = 22 }: { size?: number }) => <CalcIcon size={size} />;
 
 /** Handed to a custom `trigger` / function-child so you can open the dialog from any UI. */
 export interface LauncherApi {

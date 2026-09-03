@@ -6,6 +6,7 @@
   --fc-slate: #5a6672;
   --fc-line: #e3e8ec;
   --fc-accent: #078dee; /* Cyan default (overridden live by settings.ui.accent) */
+  --fc-accent-ink: #ffffff; /* contrast text ON the accent (set per-preset by the provider) */
   /* derived from the accent so colour presets propagate everywhere */
   --fc-accent-weak: color-mix(in srgb, var(--fc-accent) 12%, #ffffff);
   --fc-principal: #2c7a6b;
@@ -141,7 +142,7 @@ label.field { display: block; }
 .input-wrap.solved {
   border-style: dashed;
   border-color: var(--fc-accent);
-  background: var(--fc-accent-weak);
+  background: transparent;
 }
 .solved-note { font-size: 12px; color: var(--fc-accent); margin-top: 4px; }
 .tenure-pair { display: flex; gap: var(--fc-space); }
@@ -169,10 +170,9 @@ label.field { display: block; }
 }
 .seg button[aria-pressed='true'] {
   background: var(--fc-accent);
-  color: #fff;
+  color: var(--fc-accent-ink);
   font-weight: 600;
 }
-[data-theme='dark'] .seg button[aria-pressed='true'] { color: #06121c; }
 
 .solve-row { margin-bottom: calc(var(--fc-space) * 2.5); }
 .solve-row .lbl { font-size: 13px; color: var(--fc-slate); margin-bottom: 8px; display: block; }
@@ -410,7 +410,9 @@ td .in-txt { color: var(--fc-interest); }
   position: sticky; top: 0; background: var(--fc-paper); z-index: 5;
 }
 .fc-topbar .brand strong { font-size: 18px; letter-spacing: -0.01em; }
-.fc-brand { flex-direction: column; align-items: flex-start; gap: 0; }
+.fc-brand { flex-direction: row; align-items: center; gap: 10px; }
+.fc-brand-mark { display: flex; align-items: center; color: var(--fc-accent); flex: 0 0 auto; }
+.fc-brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
 .fc-brand strong { line-height: 1.15; }
 .fc-brand-sub { font-size: 11px; color: var(--fc-accent); text-decoration: none; font-weight: 500; line-height: 1.15; }
 .fc-brand-sub:hover { text-decoration: underline; }
@@ -429,8 +431,7 @@ td .in-txt { color: var(--fc-interest); }
   border-radius: 8px; cursor: pointer;
 }
 .rail-item:hover { background: var(--fc-accent-weak); }
-.rail-item.active { background: var(--fc-accent); color: #fff; font-weight: 600; }
-[data-theme='dark'] .rail-item.active { color: #06121c; }
+.rail-item.active { background: var(--fc-accent); color: var(--fc-accent-ink); font-weight: 600; }
 
 .fc-main { flex: 1; min-width: 0; padding: 24px; overflow-y: auto; max-width: 900px; margin: 0 auto; width: 100%; }
 
@@ -462,7 +463,7 @@ td .in-txt { color: var(--fc-interest); }
 /* FAB */
 .fc-fab {
   position: fixed; z-index: 9000; width: 56px; height: 56px; border-radius: 50%;
-  border: 0; background: var(--fc-accent); color: #fff; cursor: pointer;
+  border: 0; background: var(--fc-accent); color: var(--fc-accent-ink); cursor: pointer;
   box-shadow: var(--fc-shadow);
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
@@ -656,7 +657,7 @@ tr.year-row, tr.month-row { transition: background 0.12s ease; }
 .sci-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--fc-space); margin-bottom: calc(var(--fc-space) * 1.5); }
 .sci-toolbar .seg button { text-transform: uppercase; padding: 6px 10px; font-size: 12px; }
 .sci-mem {
-  margin-left: auto; font-weight: 700; font-size: 13px; color: #fff;
+  margin-left: auto; font-weight: 700; font-size: 13px; color: var(--fc-accent-ink);
   background: var(--fc-accent); border-radius: 999px; padding: 2px 9px;
 }
 
@@ -687,9 +688,9 @@ tr.year-row, tr.month-row { transition: background 0.12s ease; }
 .sci-key.num { font-weight: 600; }
 .sci-key.fn { color: var(--fc-slate); font-size: 14px; }
 .sci-key.op { background: var(--fc-paper); font-weight: 600; }
-.sci-key.accent { background: var(--fc-accent); color: #fff; border-color: var(--fc-accent); font-weight: 700; }
+.sci-key.accent { background: var(--fc-accent); color: var(--fc-accent-ink); border-color: var(--fc-accent); font-weight: 700; }
 .sci-key.mode { background: var(--fc-paper); color: var(--fc-slate); font-size: 13px; }
-.sci-key.mode.on { background: var(--fc-accent); color: #fff; border-color: var(--fc-accent); }
+.sci-key.mode.on { background: var(--fc-accent); color: var(--fc-accent-ink); border-color: var(--fc-accent); }
 
 .sci-memrow { margin-top: 6px; }
 
