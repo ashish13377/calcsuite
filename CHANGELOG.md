@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.4] — 2026-09-04
+
+### Fixed
+- **Build no longer fails without `jspdf` / `xlsx`.** The lazy PDF/XLSX exports carried only Vite's `/* @vite-ignore */`, which meant nothing to webpack/Turbopack — so a consumer's Next.js build tried to resolve the optional peers at bundle time and hard-failed (`Module not found: Can't resolve 'jspdf' / 'xlsx'`) even for apps that never export to those formats. The dynamic imports now also carry `/* webpackIgnore: true */` and `/* turbopackIgnore: true */`, so consumer bundlers leave them as native runtime `import()`s. Installing `calcsuite-react` alone is enough to build; PDF/XLSX still degrade gracefully at runtime with a friendly error until you add the optional peer.
+
 ## [1.1.3] — 2026-09-04
 
 ### Fixed
