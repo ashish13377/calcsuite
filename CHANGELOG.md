@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] — 2026-09-04
+
+### Added
+- **Upload / server API config in Settings.** The Integration Panel — connection URL, auth strategy, endpoints, upload strategy (multipart / presigned / base64Json) with filename template, a payload builder with live JSON preview, test-connection, copy-as-cURL, and a queue inspector — is now embedded under **Settings → File upload & server API**. Users can point exports (PDF/CSV/…) and saved calculations directly at their own server with no code. No secret is ever stored by the app.
+
 ## [1.0.0] — 2026-09-04
 
 Initial release. The financial-calculator module of **AceCBM (Ace Cloud Business Management)**.

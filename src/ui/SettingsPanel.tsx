@@ -4,6 +4,7 @@ import { makeFormatter } from '../core/format';
 import type { Grouping, RoundingMode } from '../settings/settings';
 import { D } from '../core/decimal';
 import { ACCENTS, FONTS } from './themePresets';
+import { IntegrationPanel } from './IntegrationPanel';
 
 // Live settings surface (§8.1). Every numeric-format control shows a live preview of the
 // same sample number so the effect is immediate. Import/export as JSON, reset per app.
@@ -144,11 +145,19 @@ export function SettingsPanel() {
         </Row>
       </Section>
 
-      <Section title="Integration (advanced)">
-        <Row label="Enable integration panel">
+      <Section title="File upload & server API">
+        <Row label="Save & upload to your server">
           <Toggle on={settings.features.integrationPanel} onClick={() => update({ features: { integrationPanel: !settings.features.integrationPanel } })} />
         </Row>
+        {!settings.features.integrationPanel && (
+          <p style={{ fontSize: 12, color: 'var(--fc-slate)', margin: '8px 0 0' }}>
+            Turn this on to configure your <strong>upload URL, authentication, and payload</strong> — so exports (PDF/CSV/…) and saved
+            calculations post directly to your own server. No secret is ever stored by the app.
+          </p>
+        )}
       </Section>
+
+      {settings.features.integrationPanel && <IntegrationPanel />}
 
       <div className="actions-row">
         <button className="icon-btn" onClick={exportJson}>Export settings</button>
