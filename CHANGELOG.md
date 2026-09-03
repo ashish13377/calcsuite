@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.5] — 2026-09-04
+
+### Changed
+- **PDF & Excel export now work out of the box.** `jspdf` and `xlsx` are now regular **dependencies** (installed automatically with `calcsuite-react`) instead of optional peers. Install the library and export to PDF/XLSX just works — no extra packages, nothing for end users to add. The libraries are still loaded lazily via dynamic `import()`, so they're code-split into a separate chunk and only fetched the first time someone exports; they never touch initial bundle size or SSR. This supersedes 1.1.4: `webpackIgnore`/`turbopackIgnore` fixed the build but left the runtime import unresolvable in the browser, so export couldn't actually run.
+
 ## [1.1.4] — 2026-09-04
 
 ### Fixed

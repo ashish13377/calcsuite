@@ -1,6 +1,6 @@
 {
   "name": "calcsuite-react",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Decimal-exact, offline-first financial calculator library for React — India (₹) & US ($). ~55 calculators, scientific calculator, live FX, export, launcher/dialog. The financial-calculator module of AceCBM (Ace Cloud Business Management).",
   "keywords": [
     "finance",
@@ -67,28 +67,20 @@
     "react": "^18.3.1 || ^19.0.0",
     "react-dom": "^18.3.1 || ^19.0.0"
   },
-  "peerDependenciesMeta": {
-    "jspdf": {
-      "optional": true
-    },
-    "xlsx": {
-      "optional": true
-    }
-  },
   "dependencies": {
-    "decimal.js": "^10.4.3"
+    "decimal.js": "^10.4.3",
+    "jspdf": "^4.2.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "happy-dom": "^20.13.2",
-    "jspdf": "^4.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
-    "vitest": "^2.1.8",
-    "xlsx": "^0.18.5"
+    "vitest": "^2.1.8"
   }
 }
