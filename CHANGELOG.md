@@ -3,6 +3,14 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] — 2026-09-04
+
+### Fixed
+- **Dialog layers above host UI.** Raised the dialog / command-palette / toast z-index so CalcSuite renders above app chrome (e.g. MUI app bars & drawers) when embedded in another app.
+
+### Changed
+- **`<FinCalcProvider settings={…}>` now applies.** The provider accepts a deep-partial `settings` prop as *defaults* (region, currency, theme, …). The user's in-app choices still persist in `localStorage` and take precedence, so region stays user-driven.
+
 ## [1.1.0] — 2026-09-04
 
 ### Added

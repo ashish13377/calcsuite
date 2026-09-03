@@ -461,7 +461,7 @@ td .in-txt { color: var(--fc-interest); }
 
 /* FAB */
 .fc-fab {
-  position: fixed; z-index: 40; width: 56px; height: 56px; border-radius: 50%;
+  position: fixed; z-index: 9000; width: 56px; height: 56px; border-radius: 50%;
   border: 0; background: var(--fc-accent); color: #fff; cursor: pointer;
   box-shadow: var(--fc-shadow);
   display: flex; align-items: center; justify-content: center;
@@ -477,7 +477,7 @@ td .in-txt { color: var(--fc-interest); }
 /* Dialog */
 .dialog-backdrop {
   position: fixed; inset: 0; background: rgba(10, 16, 20, 0.5);
-  display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px;
+  display: flex; align-items: center; justify-content: center; z-index: 2147483000; padding: 20px;
   animation: fc-fade 0.12s ease;
 }
 .dialog {
@@ -501,7 +501,7 @@ td .in-txt { color: var(--fc-interest); }
 }
 
 /* Command palette */
-.palette-backdrop { position: fixed; inset: 0; background: rgba(10, 16, 20, 0.4); z-index: 60; display: flex; justify-content: center; align-items: flex-start; padding-top: 12vh; }
+.palette-backdrop { position: fixed; inset: 0; background: rgba(10, 16, 20, 0.4); z-index: 2147483010; display: flex; justify-content: center; align-items: flex-start; padding-top: 12vh; }
 .palette { background: var(--fc-surface); border: 1px solid var(--fc-line); border-radius: 14px; width: min(560px, 92vw); box-shadow: var(--fc-shadow); overflow: hidden; }
 .palette-input { width: 100%; border: 0; border-bottom: 1px solid var(--fc-line); outline: 0; background: transparent; color: var(--fc-ink); font: inherit; font-size: 16px; padding: 16px; }
 .palette-list { list-style: none; margin: 0; padding: 6px; max-height: 50vh; overflow-y: auto; }
@@ -577,7 +577,7 @@ td .in-txt { color: var(--fc-interest); }
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 50;
+  z-index: 2147483020;
   padding: 10px 16px;
   border-radius: 999px;
   font-size: 13px;

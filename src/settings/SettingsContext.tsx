@@ -29,14 +29,17 @@ function deepMerge<T>(base: T, patch: DeepPartial<T>): T {
   return out;
 }
 
-function load(): Settings {
+function load(initial?: DeepPartial<Settings>): Settings {
+  // Host-supplied `settings` set the defaults; the user's saved choice (localStorage) wins,
+  // so the region/theme/etc. the user picks in-app persists across reloads.
+  const base = initial ? deepMerge(DEFAULT_SETTINGS, initial) : DEFAULT_SETTINGS;
   try {
     const raw = localStorage.getItem(NS);
-    if (raw) return deepMerge(DEFAULT_SETTINGS, JSON.parse(raw));
+    if (raw) return deepMerge(base, JSON.parse(raw));
   } catch {
     /* ignore */
   }
-  return DEFAULT_SETTINGS;
+  return base;
 }
 
 function persist(s: Settings) {
@@ -47,8 +50,15 @@ function persist(s: Settings) {
   }
 }
 
-export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [settings, setSettings] = useState<Settings>(load);
+export function SettingsProvider({
+  children,
+  settings: initial,
+}: {
+  children: ReactNode;
+  /** Default settings (deep-partial). The user's in-app choices still persist and win. */
+  settings?: DeepPartial<Settings>;
+}) {
+  const [settings, setSettings] = useState<Settings>(() => load(initial));
 
   const apply = useCallback((next: Settings) => {
     setSettings(next);
