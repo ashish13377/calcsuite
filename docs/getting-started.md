@@ -90,6 +90,45 @@ The launcher trigger is **fully customizable** — any icon, any button, or rend
 
 ---
 
+### 🎛️ Open the dialog from a Material UI (MUI) button
+
+The trigger is a render-prop, so **any** component library's button works. With **MUI**:
+
+```tsx
+import Button from '@mui/material/Button';
+import { FinCalcLauncher } from 'calcsuite-react';
+
+<FinCalcLauncher
+  trigger={({ toggle }) => (
+    <Button variant="contained" onClick={toggle}>
+      Open calculators
+    </Button>
+  )}
+/>
+```
+
+Or drive it from your own state (e.g. from a MUI `MenuItem`, `IconButton`, or app-bar action):
+
+```tsx
+import { useState } from 'react';
+import Button from '@mui/material/Button';
+import { FinCalcLauncher } from 'calcsuite-react';
+
+function Toolbar() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button variant="outlined" onClick={() => setOpen(true)}>Calculators</Button>
+      <FinCalcLauncher variant="headless" open={open} onOpenChange={setOpen} />
+    </>
+  );
+}
+```
+
+The same works with Chakra, Ant Design, shadcn/ui, or a plain `<button>` — CalcSuite owns the dialog, focus trap, and shortcut isolation; you own the button.
+
+---
+
 ## 🧩 Embed a single calculator
 
 Don't want the whole suite? Render just one calculator inline with `CalculatorPanel` and its id:

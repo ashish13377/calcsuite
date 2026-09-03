@@ -3,6 +3,9 @@
 [![CI](https://github.com/ashish13377/calcsuite/actions/workflows/ci.yml/badge.svg)](https://github.com/ashish13377/calcsuite/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/calcsuite-react.svg)](https://www.npmjs.com/package/calcsuite-react)
 [![license: MIT](https://img.shields.io/npm/l/calcsuite-react.svg)](LICENSE)
+[![live demo](https://img.shields.io/badge/demo-live-brightgreen)](https://ashish13377.github.io/calcsuite/)
+
+**▶ Live demo:** https://ashish13377.github.io/calcsuite/
 
 **Decimal-exact, offline-first financial calculator library for React** — ~55 calculators for **🇮🇳 India (₹)** and **🇺🇸 United States ($)**, a scientific calculator, live currency conversion, export, and a keyboard-first launcher/dialog. All money math runs on `decimal.js` — no floating-point in any money path.
 
