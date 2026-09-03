@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.2] — 2026-09-04
+
+### Fixed
+- **Unstyled UI when embedded.** `<FinCalcProvider>` now renders the design-token root (`data-fincalc-root` + resolved `data-theme` / `data-density` / accent / font) itself, via a layout-neutral `display: contents` wrapper. Previously that root was applied only by the demo app, so consumers of the package rendered the calculators with every `--fc-*` token undefined — transparent surfaces, no borders, no dialog panel. The wrapper is scoped (not on `<html>`), so it never collides with the host app's own `data-theme`.
+
 ## [1.1.1] — 2026-09-04
 
 ### Fixed

@@ -1,6 +1,7 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { DEFAULT_SETTINGS, regionDefaults, type Region, type Settings } from './settings';
 import { makeFormatter, type Formatter } from '../core/format';
+import { fontStack } from '../ui/themePresets';
 
 type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
 
@@ -98,7 +99,29 @@ export function SettingsProvider({
     [settings, fmt, update, setRegion, reset, replace, resolvedTheme],
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  // Design-token root. Every `--fc-*` token is defined on `[data-fincalc-root]`, so without this
+  // wrapper a host app (calcsuite-react consumer) renders the UI with all tokens undefined —
+  // transparent surfaces, no borders. `display: contents` keeps the wrapper layout-neutral while
+  // still providing tokens: custom-property inheritance and `[data-fincalc-root] .x` descendant
+  // selectors are DOM-based, so they cross it. Scoped here (not on <html>) so we don't clobber the
+  // host's own `data-theme`. Dialogs render inside this subtree (no internal portal), so they inherit.
+  const rootStyle = useMemo<CSSProperties>(
+    () => ({ display: 'contents', ['--fc-accent' as any]: settings.ui.accent, ['--fc-font-ui' as any]: fontStack(settings.ui.fontFamily) }),
+    [settings.ui.accent, settings.ui.fontFamily],
+  );
+
+  return (
+    <Ctx.Provider value={value}>
+      <div
+        data-fincalc-root=""
+        data-theme={resolvedTheme === 'highContrast' ? 'dark' : resolvedTheme}
+        data-density={settings.ui.density}
+        style={rootStyle}
+      >
+        {children}
+      </div>
+    </Ctx.Provider>
+  );
 }
 
 export function useSettings(): SettingsCtx {
