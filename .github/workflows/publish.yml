@@ -1,0 +1,33 @@
+name: Publish to npm
+
+# Publishes when you push a version tag, e.g.:
+#   npm version 1.0.1   # bumps package.json + creates a git tag
+#   git push --follow-tags
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # required for npm provenance
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install
+        run: npm ci
+
+      # `prepublishOnly` runs the tests and `prepack` builds dist/ before publish.
+      - name: Publish
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

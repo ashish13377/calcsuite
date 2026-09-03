@@ -1,5 +1,9 @@
 # CalcSuite
 
+[![CI](https://github.com/ashish13377/calcsuite/actions/workflows/ci.yml/badge.svg)](https://github.com/ashish13377/calcsuite/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/calcsuite.svg)](https://www.npmjs.com/package/calcsuite)
+[![license: MIT](https://img.shields.io/npm/l/calcsuite.svg)](LICENSE)
+
 **Decimal-exact, offline-first financial calculator library for React** — ~55 calculators for **🇮🇳 India (₹)** and **🇺🇸 United States ($)**, a scientific calculator, live currency conversion, export, and a keyboard-first launcher/dialog. All money math runs on `decimal.js` — no floating-point in any money path.
 
 > 🧩 **Part of AceCBM — Ace Cloud Business Management**, the unified platform for billing, inventory, finance, and specialized industry workflows (*tailored globally, customized for your local regulation*). CalcSuite is its embeddable financial-calculator module — usable standalone or inside AceCBM.
