@@ -3,7 +3,7 @@
 > 🧩 **Use in your app** — render any one with `<CalculatorPanel id="…" />`, or run its `compute` programmatically.
 >
 > ```tsx
-> import { CalculatorPanel, calculatorById, makeFormatter, DEFAULT_SETTINGS, D } from 'calcsuite';
+> import { CalculatorPanel, calculatorById, makeFormatter, DEFAULT_SETTINGS, D } from 'calcsuite-react';
 > <CalculatorPanel id="tax.gst" />
 > // engine (no UI):
 > const def = calculatorById('tax.gst')!;

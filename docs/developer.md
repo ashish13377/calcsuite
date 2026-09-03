@@ -125,7 +125,7 @@ For calculators that need bespoke UX (solve-for-any, a keypad, live fetch), set 
 Consumers register calculators at runtime — no fork needed — and they get the whole UI (form, validation, export, history, theming) for free:
 
 ```ts
-import { registerCalculator } from 'calcsuite';
+import { registerCalculator } from 'calcsuite-react';
 registerCalculator(myCalculatorDef); // same CalculatorDef shape; then render <CalculatorPanel id="my.id" />
 ```
 

@@ -23,7 +23,7 @@ setRegion('US');                        // resets currency/format/day-count to U
 3. **Let users edit** by rendering the bundled UI:
 
 ```tsx
-import { SettingsPanel } from 'calcsuite';
+import { SettingsPanel } from 'calcsuite-react';
 <SettingsPanel />   // region · currency · number format · calculation · appearance · compliance · integration
 ```
 
@@ -91,7 +91,7 @@ Presets: `POLICY_DEFAULT`, and India/US bank presets via `regionDefaults()`.
 `FinCalcSettings` is exported for typing your config:
 
 ```ts
-import type { FinCalcSettings } from 'calcsuite';
+import type { FinCalcSettings } from 'calcsuite-react';
 const settings: Partial<FinCalcSettings> = { region: 'US', ui: { accent: '#7635DC' } };
 ```
 Defined in `src/settings/settings.ts`; formatting derives from it via `makeFormatter(settings)`.

@@ -3,7 +3,7 @@
 > 🧩 **Use in your app** — render any one with `<CalculatorPanel id="…" />`, or use the `finance` helpers directly.
 >
 > ```tsx
-> import { CalculatorPanel, finance } from 'calcsuite';
+> import { CalculatorPanel, finance } from 'calcsuite-react';
 > <CalculatorPanel id="invest.sip" />
 > // engine (no UI): SIP future value (annuity-due)
 > finance.fvAnnuity('10000', finance.periodic('12'), 120, true).toFixed(2);

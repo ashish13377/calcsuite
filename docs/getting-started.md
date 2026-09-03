@@ -3,9 +3,9 @@
 ## 📦 Install
 
 ```bash
-npm install calcsuite
-# yarn add calcsuite
-# pnpm add calcsuite
+npm install calcsuite-react
+# yarn add calcsuite-react
+# pnpm add calcsuite-react
 ```
 
 That's all — **`decimal.js` is a dependency and installs automatically**. `react` and `react-dom` are peer deps you already have (18.3+ / 19).
@@ -19,7 +19,7 @@ npm install jspdf xlsx      # yarn add jspdf xlsx
 Import the stylesheet once (design tokens + component styles):
 
 ```ts
-import 'calcsuite/theme.css';
+import 'calcsuite-react/theme.css';
 ```
 
 ---
@@ -29,8 +29,8 @@ import 'calcsuite/theme.css';
 The fastest integration is **one provider + one launcher**: a floating calculator button that opens the entire calculator suite in a focus-trapped dialog.
 
 ```tsx
-import { FinCalcProvider, FinCalcLauncher } from 'calcsuite';
-import 'calcsuite/theme.css';
+import { FinCalcProvider, FinCalcLauncher } from 'calcsuite-react';
+import 'calcsuite-react/theme.css';
 
 export default function App() {
   return (
@@ -95,8 +95,8 @@ The launcher trigger is **fully customizable** — any icon, any button, or rend
 Don't want the whole suite? Render just one calculator inline with `CalculatorPanel` and its id:
 
 ```tsx
-import { FinCalcProvider, CalculatorPanel } from 'calcsuite';
-import 'calcsuite/theme.css';
+import { FinCalcProvider, CalculatorPanel } from 'calcsuite-react';
+import 'calcsuite-react/theme.css';
 
 <FinCalcProvider settings={{ region: 'IN' }}>
   <CalculatorPanel id="loan.emi" />       {/* or "invest.sip", "tax.gst", … */}
@@ -106,7 +106,7 @@ import 'calcsuite/theme.css';
 Bespoke panels are exported directly too:
 
 ```tsx
-import { LoanEmiPanel, SciCalculator, CurrencyConverter } from 'calcsuite';
+import { LoanEmiPanel, SciCalculator, CurrencyConverter } from 'calcsuite-react';
 ```
 
 > 🆔 Calculator ids: `loan.emi`, `loan.compare`, `invest.sip`, `invest.fd`, `returns.xirr`, `tax.gst`, `tools.scientific`, `tools.currency`, … Full list in the [calculator docs](README.md#-calculators-what-each-does-when--how-to-use).
@@ -118,7 +118,7 @@ import { LoanEmiPanel, SciCalculator, CurrencyConverter } from 'calcsuite';
 Every calculation is a pure function — call it from a server, a script, or your own UI:
 
 ```ts
-import { loan, finance, currency } from 'calcsuite';
+import { loan, finance, currency } from 'calcsuite-react';
 
 // EMI: solve for the payment
 const r = loan.solve({ region: 'IN', principal: '2500000', annualRatePct: '8.65', tenureMonths: 240 });

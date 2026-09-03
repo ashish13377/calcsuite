@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // Public API of the `calcsuite` package.
 //
-//   import { FinCalcProvider, FinCalcLauncher } from 'calcsuite';
-//   import { loan, finance } from 'calcsuite';
-//   import 'calcsuite/theme.css';   // design tokens + component styles
+//   import { FinCalcProvider, FinCalcLauncher } from 'calcsuite-react';
+//   import { loan, finance } from 'calcsuite-react';
+//   import 'calcsuite-react/theme.css';   // design tokens + component styles
 //
 // Peer deps: react, react-dom. Runtime dep: decimal.js. Optional (lazy) for
 // PDF/XLSX export: jspdf, xlsx.

@@ -3,7 +3,7 @@
 > 🧩 **Use in your app** — the scientific calculator and currency converter are dedicated components; the rest render via `<CalculatorPanel id="…" />`.
 >
 > ```tsx
-> import { SciCalculator, CurrencyConverter, CalculatorPanel, evalExpression } from 'calcsuite';
+> import { SciCalculator, CurrencyConverter, CalculatorPanel, evalExpression } from 'calcsuite-react';
 > <SciCalculator />
 > <CurrencyConverter />
 > <CalculatorPanel id="tools.units" />

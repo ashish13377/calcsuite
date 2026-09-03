@@ -3,7 +3,7 @@
 > 🧩 **Use in your app** — render any one with `<CalculatorPanel id="…" />`, or call the `finance` helpers directly.
 >
 > ```tsx
-> import { CalculatorPanel, finance } from 'calcsuite';
+> import { CalculatorPanel, finance } from 'calcsuite-react';
 > <CalculatorPanel id="returns.xirr" />
 > // engine (no UI):
 > finance.xirr([{ date: '2020-01-01', amount: '-10000' }, { date: '2021-01-01', amount: '12000' }])?.toFixed(4); // ≈ "0.2001"

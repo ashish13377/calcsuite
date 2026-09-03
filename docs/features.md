@@ -9,7 +9,7 @@ Cross-cutting capabilities and the exports behind them.
 Saved calculations live in a **shared, persisted store**. Read/write it with the hook, or render the panel.
 
 ```tsx
-import { useHistory, HistoryPanel } from 'calcsuite';
+import { useHistory, HistoryPanel } from 'calcsuite-react';
 
 const { items, save, clear } = useHistory();
 save({ id: 'loan.emi', title: 'Home 25L @ 8.65%', primary: '₹21,933.51', values });
@@ -29,7 +29,7 @@ save({ id: 'loan.emi', title: 'Home 25L @ 8.65%', primary: '₹21,933.51', value
 Any result serialises via `createExporter()` or the `<ExportMenu>` component — **including the full schedule**.
 
 ```tsx
-import { createExporter, ExportMenu } from 'calcsuite';
+import { createExporter, ExportMenu } from 'calcsuite-react';
 
 const exporter = createExporter();
 await exporter.export('csv', payload);   // downloads
@@ -57,7 +57,7 @@ Heavy formats download as separate chunks only when first used.
 The `<CurrencyConverter/>` fetches **live rates** (via `fetchLiveRate`, a free no-key feed) with a **✈ Offline** toggle for manual/cached rates. Full details in [Tools → Currency converter](calculators/tools.md).
 
 ```tsx
-import { CurrencyConverter, currency, fetchLiveRate } from 'calcsuite';
+import { CurrencyConverter, currency, fetchLiveRate } from 'calcsuite-react';
 await fetchLiveRate('USD', 'INR');          // { rate, asOf, provider }
 currency.convert('100', '83').toString();   // "8300"  (Decimal-exact)
 ```

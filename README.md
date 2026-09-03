@@ -1,8 +1,8 @@
 # CalcSuite
 
 [![CI](https://github.com/ashish13377/calcsuite/actions/workflows/ci.yml/badge.svg)](https://github.com/ashish13377/calcsuite/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/calcsuite.svg)](https://www.npmjs.com/package/calcsuite)
-[![license: MIT](https://img.shields.io/npm/l/calcsuite.svg)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/calcsuite-react.svg)](https://www.npmjs.com/package/calcsuite-react)
+[![license: MIT](https://img.shields.io/npm/l/calcsuite-react.svg)](LICENSE)
 
 **Decimal-exact, offline-first financial calculator library for React** — ~55 calculators for **🇮🇳 India (₹)** and **🇺🇸 United States ($)**, a scientific calculator, live currency conversion, export, and a keyboard-first launcher/dialog. All money math runs on `decimal.js` — no floating-point in any money path.
 
@@ -13,7 +13,7 @@
 ## Install
 
 ```bash
-npm install calcsuite       # yarn add calcsuite · pnpm add calcsuite
+npm install calcsuite-react       # yarn add calcsuite-react · pnpm add calcsuite-react
 ```
 
 `decimal.js` installs automatically; `react`/`react-dom` are peer deps (18.3+ / 19). Optional PDF/XLSX export: `npm install jspdf xlsx`.
@@ -21,8 +21,8 @@ npm install calcsuite       # yarn add calcsuite · pnpm add calcsuite
 ## Quickstart
 
 ```tsx
-import { FinCalcProvider, FinCalcLauncher } from 'calcsuite';
-import 'calcsuite/theme.css';
+import { FinCalcProvider, FinCalcLauncher } from 'calcsuite-react';
+import 'calcsuite-react/theme.css';
 
 export default function App() {
   return (
@@ -37,14 +37,14 @@ export default function App() {
 Embed a single calculator:
 
 ```tsx
-import { CalculatorPanel } from 'calcsuite';
+import { CalculatorPanel } from 'calcsuite-react';
 <CalculatorPanel id="loan.emi" />   // or "invest.sip", "tax.gst", "tools.scientific", …
 ```
 
 Use the engine with no UI:
 
 ```ts
-import { loan, finance } from 'calcsuite';
+import { loan, finance } from 'calcsuite-react';
 loan.solve({ region: 'IN', principal: '2500000', annualRatePct: '8.65', tenureMonths: 240 }).payment.toString(); // "21933.51"
 finance.xirr([{ date: '2020-01-01', amount: '-10000' }, { date: '2021-01-01', amount: '12000' }]); // ≈ 0.20
 ```

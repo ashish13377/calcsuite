@@ -3,7 +3,7 @@
 > 🧩 **Use in your app** — render any one with `<CalculatorPanel id="…" />`, use `<FinCalcLauncher/>` for the whole suite, or call the engine directly. Amounts are `Decimal`.
 >
 > ```tsx
-> import { CalculatorPanel, loan } from 'calcsuite';
+> import { CalculatorPanel, loan } from 'calcsuite-react';
 > <CalculatorPanel id="loan.emi" />
 > // engine (no UI):
 > loan.solve({ region: 'IN', principal: '2500000', annualRatePct: '8.65', tenureMonths: 240 }).payment.toString(); // "21933.51"

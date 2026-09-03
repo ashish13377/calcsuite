@@ -1,14 +1,14 @@
 # 📚 CalcSuite — Library Documentation
 
-**CalcSuite** is a **React library** (npm package `calcsuite`) that drops a complete, decimal-exact financial calculator suite into *your* app — ~55 calculators for **🇮🇳 India (₹)** and **🇺🇸 United States ($)**, a scientific calculator, live currency conversion, export, and a keyboard-first launcher/dialog. All money math runs on `decimal.js` (no floating-point in any money path).
+**CalcSuite** is a **React library** (npm package `calcsuite-react`) that drops a complete, decimal-exact financial calculator suite into *your* app — ~55 calculators for **🇮🇳 India (₹)** and **🇺🇸 United States ($)**, a scientific calculator, live currency conversion, export, and a keyboard-first launcher/dialog. All money math runs on `decimal.js` (no floating-point in any money path).
 
 > 🧩 **Part of AceCBM — Ace Cloud Business Management**, the unified platform for billing, inventory, finance, and specialized industry workflows (*tailored globally, customized for your local regulation*). CalcSuite is its embeddable financial-calculator module — usable standalone or inside AceCBM.
 >
 > 📦 **This is a package, not an application.** You install it, wrap your app in a provider, and render its components — or call its pure engine functions directly. There is a demo app in the repo for local development, but the product is the library.
 
 ```tsx
-import { FinCalcProvider, FinCalcLauncher } from 'calcsuite';
-import 'calcsuite/theme.css';
+import { FinCalcProvider, FinCalcLauncher } from 'calcsuite-react';
+import 'calcsuite-react/theme.css';
 
 export default function App() {
   return (
@@ -55,7 +55,7 @@ export default function App() {
 
 ## 📦 What you get
 
-| Layer | Import from `calcsuite` | Use it for |
+| Layer | Import from `calcsuite-react` | Use it for |
 |---|---|---|
 | 🎛️ **Provider** | `FinCalcProvider`, `useFinCalc` | App-wide settings, region, formatting |
 | 🚀 **Launcher/Dialog** | `FinCalcLauncher`, `FinCalcDialog`, `FinCalcRoot` | The one-button "everything inside" surface |

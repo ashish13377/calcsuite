@@ -11,7 +11,7 @@ CalcSuite works **100% offline** with no backend. When you *do* want to save cal
 1. **In code** — build a transport with `createTransport(config)` and drive save/upload/list yourself, or pass a `transport` in your provider settings so the bundled Save/Export wire to it automatically:
 
 ```tsx
-import { createTransport } from 'calcsuite';
+import { createTransport } from 'calcsuite-react';
 
 const transport = createTransport({
   baseUrl: 'https://api.example.com/fincalc',

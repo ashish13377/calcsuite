@@ -1,10 +1,10 @@
 # 🧩 API Reference
 
-Everything importable from `calcsuite`. Types ship with the package (`calcsuite` is written in TypeScript).
+Everything importable from `calcsuite-react`. Types ship with the package (`calcsuite` is written in TypeScript).
 
 ```ts
-import { FinCalcProvider, loan, useFinCalc /* … */ } from 'calcsuite';
-import 'calcsuite/theme.css';
+import { FinCalcProvider, loan, useFinCalc /* … */ } from 'calcsuite-react';
+import 'calcsuite-react/theme.css';
 ```
 
 ---
@@ -102,7 +102,7 @@ loan.REGIONS                               // region profiles
 ## 📤 Export
 
 ```ts
-import { createExporter } from 'calcsuite';
+import { createExporter } from 'calcsuite-react';
 const exporter = createExporter();
 await exporter.export('pdf', payload);   // 'csv'|'tsv'|'json'|'url'|'clipboard'|'markdown'|'print'|'ics'|'pdf'|'xlsx'|'png'|'qr'
 ```
@@ -113,7 +113,7 @@ await exporter.export('pdf', payload);   // 'csv'|'tsv'|'json'|'url'|'clipboard'
 ## 🔌 Transport
 
 ```ts
-import { createTransport } from 'calcsuite';
+import { createTransport } from 'calcsuite-react';
 const transport = createTransport(config);  // save/update/get/list/delete/upload/getRates/queue
 ```
 Also `buildPayload`, `buildSavePayload`, `DEFAULT_ENVELOPE`, `createFxCache`, `sanitizeFilename`, `buildFilename`. Types `TransportConfig`, `UploadConfig`, `PayloadField`. See [Backend integration](backend-integration.md).
