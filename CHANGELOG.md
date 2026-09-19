@@ -3,6 +3,14 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.7] — 2026-09-04
+
+### Fixed
+- **Faded result numbers when embedded.** The base text colour was only on `body`, so once a host app portals the UI into its own `<body>`, any element without an explicit colour (the result hero, the secondary stat values) inherited the *host's* text colour and rendered faded/low-contrast. The base `color` now lives on `[data-fincalc-root]`, so all embedded content inherits CalcSuite's ink; tone-coloured values are unaffected.
+
+### Changed
+- **Loan EMI hero uses the positive (green) tone**, matching the "lowest total outflow" hero in Compare loans, so the headline figure reads consistently across the loan calculators.
+
 ## [1.1.6] — 2026-09-04
 
 ### Fixed

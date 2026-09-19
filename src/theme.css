@@ -1,5 +1,9 @@
 /* ─────────────── Design tokens (§11.3 / §11.4) ─────────────── */
 [data-fincalc-root] {
+  /* Base text colour lives here, not only on `body`: when a host app portals the UI into its own
+     <body>, any element without an explicit colour would otherwise inherit the HOST's text colour
+     (e.g. a faded result hero / stat values). Tone classes set colour directly, so they still win. */
+  color: var(--fc-ink);
   --fc-ink: #141a1f;
   --fc-paper: #fbfcfd;
   --fc-surface: #ffffff;

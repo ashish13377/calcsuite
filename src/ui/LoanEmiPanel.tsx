@@ -198,7 +198,7 @@ export function LoanEmiPanel() {
                 {profile.paymentLabel}
                 {basis === 'flat' ? ' · flat rate' : ''}
               </div>
-              <div className="value num">
+              <div className="value num pos-txt">
                 <span className="cur">{hero.symbol}</span>
                 {hero.digits}
                 <span className="per"> /month</span>
