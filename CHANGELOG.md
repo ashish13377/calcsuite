@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.6] — 2026-09-04
+
+### Fixed
+- **Typing was swallowed in every field when embedded.** The dialog's keyboard-isolation guard blocked a keystroke whenever `dialogEl.contains(e.target)` was false — meant to catch keys pressed while focus has escaped the dialog. But when a host app portals the dialog (e.g. MUI `<Portal>`), that check can read `false` for an input that is genuinely focused *inside* the dialog, so every keypress got `preventDefault`ed and no field could be edited. The guard now never swallows a key aimed at an editable control (`input`/`textarea`/`select`/`contenteditable`); host-shortcut isolation for non-editable/loose targets is unchanged.
+
 ## [1.1.5] — 2026-09-04
 
 ### Changed

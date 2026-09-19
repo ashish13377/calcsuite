@@ -78,6 +78,15 @@ export function Dialog({
       }
       const inside = !!dialogEl && dialogEl.contains(e.target as Node);
       if (!inside) {
+        // Never swallow a keystroke aimed at an editable control. `dialogEl.contains(e.target)` is
+        // fragile once the dialog is embedded in a host that portals it (and across StrictMode
+        // re-mounts): it can read false for an input that is genuinely focused inside the dialog,
+        // which would eat every keypress. Typing into a field (incl. one in a portaled sub-overlay)
+        // must always work; the isolation below is only for non-editable / loose targets.
+        const t = e.target as HTMLElement | null;
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) {
+          return;
+        }
         // focus escaped (or a global key while nothing in the dialog is focused) — block it
         e.preventDefault();
         e.stopImmediatePropagation();
