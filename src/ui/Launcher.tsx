@@ -39,6 +39,12 @@ export interface LauncherProps {
   /** Dialog sizing / title. */
   dialogSize?: 'md' | 'lg' | 'xl' | 'full';
   dialogTitle?: string;
+  /**
+   * Hide calculators from the rail and the ⌘K palette. Each entry is either a group id — one of
+   * `'loans' | 'invest' | 'returns' | 'tax' | 'tools'` (hides the whole section) — or a single
+   * calculator id such as `'tax.income'` (hides just that item). e.g. `hide={['tax', 'loan.compare']}`.
+   */
+  hide?: string[];
 }
 
 // §11.1 launcher: one trigger, one dialog, everything inside — with full trigger customization.
@@ -57,6 +63,7 @@ export function Launcher({
   children,
   dialogSize = 'full',
   dialogTitle = 'CalcSuite',
+  hide,
 }: LauncherProps) {
   const [uncontrolled, setUncontrolled] = useState(defaultOpen);
   const isControlled = openProp !== undefined;
@@ -109,7 +116,7 @@ export function Launcher({
       )}
 
       <Dialog open={open} onClose={api.close} title={dialogTitle} size={dialogSize}>
-        <Shell onClose={api.close} />
+        <Shell onClose={api.close} hide={hide} />
       </Dialog>
     </>
   );

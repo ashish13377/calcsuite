@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.9] — 2026-09-04
+
+### Added
+- **`hide` prop on `<FinCalcLauncher>`** to remove calculators from the rail and the ⌘K palette. Each entry is either a group id — `'loans' | 'invest' | 'returns' | 'tax' | 'tools'` (hides the whole section) — or a single calculator id like `'tax.income'` (hides one item). e.g. `hide={['tax', 'loan.compare']}`. A hidden/out-of-region active calculator falls back to the first visible one.
+
 ## [1.1.8] — 2026-09-04
 
 ### Fixed

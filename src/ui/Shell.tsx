@@ -19,10 +19,15 @@ const customRegistry = { 'loan.emi': LoanEmiPanel, scientific: SciCalculator, cu
 
 type View = 'calc' | 'settings' | 'history' | 'integration';
 
-export function Shell({ onClose }: { onClose?: () => void }) {
+export function Shell({ onClose, hide }: { onClose?: () => void; hide?: string[] }) {
   const { settings, setRegion, update, resolvedTheme } = useSettings();
   const region = settings.region;
-  const calcs = useMemo(() => calculatorsForRegion(region), [region]);
+  // `hide` entries are group ids (hide the whole section) or calculator ids (hide one item).
+  // Filtering here means the rail, the ⌘K palette, and the default/active selection all respect it.
+  const calcs = useMemo(() => {
+    const hidden = new Set(hide);
+    return calculatorsForRegion(region).filter((c) => !hidden.has(c.id) && !hidden.has(c.group));
+  }, [region, hide]);
 
   const [activeId, setActiveId] = useState('loan.emi');
   const [view, setView] = useState<View>('calc');
@@ -69,7 +74,8 @@ export function Shell({ onClose }: { onClose?: () => void }) {
     setPaletteOpen(false);
   };
 
-  const def = calculatorById(activeId) ?? calcs[0]!;
+  // Resolve against the filtered list so a hidden/out-of-region active id falls back to a visible one.
+  const def = calcs.find((c) => c.id === activeId) ?? calcs[0]!;
 
   const actions: PaletteAction[] = [
     { id: 'settings', label: 'Open settings', run: () => { setView('settings'); setPaletteOpen(false); } },
