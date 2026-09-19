@@ -4,6 +4,7 @@ import { useSettings } from '../settings/SettingsContext';
 import { tenureText } from '../core/format';
 import { ExportMenu } from './ExportMenu';
 import { SaveButton } from './SaveButton';
+import { cleanNum } from './fields';
 import type { ResultView, ScheduleView, Values } from '../core/kit';
 
 // loan.emi — the flagship calculator: solve for any of payment/amount/rate/tenure,
@@ -148,11 +149,11 @@ export function LoanEmiPanel() {
 
         <div className="grid two">
           <SolvableField label="Loan amount" solved={isSolved('principal')} solvedText={solvedDisplay.principal} affix={cur}>
-            <input className="num" inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} aria-label="Loan amount" />
+            <input className="num" inputMode="decimal" value={amount} onChange={(e) => setAmount(cleanNum(e.target.value))} aria-label="Loan amount" />
           </SolvableField>
 
           <SolvableField label="Interest rate" solved={isSolved('rate')} solvedText={solvedDisplay.rate} suffix="% p.a.">
-            <input className="num" inputMode="decimal" value={rate} onChange={(e) => setRate(e.target.value)} aria-label="Interest rate" />
+            <input className="num" inputMode="decimal" value={rate} onChange={(e) => setRate(cleanNum(e.target.value))} aria-label="Interest rate" />
           </SolvableField>
 
           <div className="field">
@@ -167,11 +168,11 @@ export function LoanEmiPanel() {
             ) : (
               <div className="tenure-pair">
                 <div className="input-wrap">
-                  <input className="num" inputMode="numeric" value={years} onChange={(e) => setYears(e.target.value)} aria-label="Years" />
+                  <input className="num" inputMode="numeric" value={years} onChange={(e) => setYears(cleanNum(e.target.value, false))} aria-label="Years" />
                   <span className="affix">yr</span>
                 </div>
                 <div className="input-wrap">
-                  <input className="num" inputMode="numeric" value={months} onChange={(e) => setMonths(e.target.value)} aria-label="Months" />
+                  <input className="num" inputMode="numeric" value={months} onChange={(e) => setMonths(cleanNum(e.target.value, false))} aria-label="Months" />
                   <span className="affix">mo</span>
                 </div>
               </div>
@@ -179,7 +180,7 @@ export function LoanEmiPanel() {
           </div>
 
           <SolvableField label={profile.paymentLabel} solved={isSolved('payment')} solvedText={solvedDisplay.payment} affix={cur}>
-            <input className="num" inputMode="decimal" value={payment} onChange={(e) => setPayment(e.target.value)} aria-label={profile.paymentLabel} />
+            <input className="num" inputMode="decimal" value={payment} onChange={(e) => setPayment(cleanNum(e.target.value))} aria-label={profile.paymentLabel} />
           </SolvableField>
         </div>
 

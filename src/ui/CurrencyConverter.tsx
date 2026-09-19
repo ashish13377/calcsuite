@@ -10,6 +10,7 @@ import {
 } from '../core/currency';
 import { fetchLiveRate, asOfMs } from '../core/liveRates';
 import { D } from '../core/decimal';
+import { cleanNum } from './fields';
 
 // Currency converter (§6.5). ONLINE by default (fetches the current rate from a free,
 // no-key provider); a toggle switches to OFFLINE (no network — manual entry + cached rates).
@@ -226,7 +227,7 @@ export function CurrencyConverter() {
                 inputMode="decimal"
                 placeholder="0.00"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(cleanNum(e.target.value))}
                 aria-label="Amount to convert"
               />
             </div>
@@ -265,7 +266,7 @@ export function CurrencyConverter() {
                 inputMode="decimal"
                 placeholder={status === 'loading' ? 'fetching…' : `rate for ${from}→${to}`}
                 value={rate}
-                onChange={(e) => onManualRate(e.target.value)}
+                onChange={(e) => onManualRate(cleanNum(e.target.value))}
                 aria-label="Exchange rate"
               />
             </div>

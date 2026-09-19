@@ -3,6 +3,11 @@
 All notable changes to **CalcSuite** are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.8] — 2026-09-04
+
+### Fixed
+- **Number fields accepted letters.** `inputMode` only hints the on-screen keyboard, so on desktop the amount / rate / tenure / currency inputs still accepted letters and stray symbols. Every numeric field now sanitises input on each keystroke and on paste — digits, at most one decimal point (integer fields none), and a single leading minus — so non-numeric characters can't be entered.
+
 ## [1.1.7] — 2026-09-04
 
 ### Fixed

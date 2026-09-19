@@ -9,6 +9,21 @@ export function labelFor(f: FieldSchema, region: Region): string {
   return f.labelByRegion?.[region] ?? f.label;
 }
 
+// `inputMode` only hints the mobile keyboard — desktop still accepts letters. These are controlled
+// inputs, so we sanitise every keystroke (and paste): keep digits, at most one decimal point (when
+// allowed) and a single leading minus; drop everything else. Empty/partial ('', '2.', '-') pass so
+// the field stays editable mid-typing.
+export function cleanNum(raw: string, decimal = true): string {
+  let s = raw.replace(decimal ? /[^0-9.-]/g : /[^0-9-]/g, '');
+  const neg = s.startsWith('-');
+  s = s.replace(/-/g, '');
+  if (decimal) {
+    const dot = s.indexOf('.');
+    if (dot !== -1) s = s.slice(0, dot + 1) + s.slice(dot + 1).replace(/\./g, '');
+  }
+  return neg ? `-${s}` : s;
+}
+
 export function Field({
   f,
   value,
@@ -46,7 +61,7 @@ export function Field({
               inputMode={f.kind === 'int' ? 'numeric' : 'decimal'}
               value={str}
               placeholder={f.optional ? 'optional' : ''}
-              onChange={(e) => onChange(e.target.value)}
+              onChange={(e) => onChange(cleanNum(e.target.value, f.kind !== 'int'))}
               aria-label={label}
             />
             {f.suffix && <span className="affix">{f.suffix}</span>}
@@ -60,7 +75,7 @@ export function Field({
         <label className="field">
           <span className="lbl">{label}</span>
           <div className="input-wrap">
-            <input className="num" inputMode="numeric" value={str} onChange={(e) => onChange(e.target.value)} aria-label={label} />
+            <input className="num" inputMode="numeric" value={str} onChange={(e) => onChange(cleanNum(e.target.value, false))} aria-label={label} />
             <span className="affix">yr</span>
           </div>
         </label>
@@ -214,7 +229,7 @@ function CashflowsField({
             <input type="date" value={r.date} onChange={(e) => push(rows.map((x, j) => (j === i ? { ...x, date: e.target.value } : x)))} aria-label="date" />
           </div>
           <div className="input-wrap">
-            <input className="num" inputMode="decimal" value={r.amount} placeholder="amount" onChange={(e) => push(rows.map((x, j) => (j === i ? { ...x, amount: e.target.value } : x)))} aria-label="amount" />
+            <input className="num" inputMode="decimal" value={r.amount} placeholder="amount" onChange={(e) => push(rows.map((x, j) => (j === i ? { ...x, amount: cleanNum(e.target.value) } : x)))} aria-label="amount" />
           </div>
           <button type="button" className="icon-btn" onClick={() => push(rows.filter((_, j) => j !== i))} aria-label="remove row">
             ✕
